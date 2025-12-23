@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group = 'io.testomate'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+def junitVersion = '6.0.1'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    testImplementation('com.codeborne:selenide:7.13.0')
+    testImplementation('org.slf4j:slf4j-simple:2.0.17')
+    testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitVersion")
+}
+
+test {
+    useJUnitPlatform()
+}
